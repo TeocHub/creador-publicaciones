@@ -11,6 +11,9 @@ Carruseles para Instagram y TikTok (1080 × 1350) a partir de texto, con el esti
 3. Escribe la publicación, o toca los **códigos** de abajo para insertarlos. La vista previa se actualiza sola y el borrador queda guardado en el navegador.
 4. **Guardar imágenes:** en el teléfono abre el menú de compartir (galería, Instagram o TikTok). En el computador descarga un `.zip`.
 5. **Subir al repositorio** (opcional): abre GitHub con el archivo ya escrito. Al confirmar, GitHub genera también las imágenes en `salida/<cuenta>/<nombre>/`.
+6. **Publicadas:** debajo de la vista previa está el historial de la cuenta, con la portada de cada publicación. Al tocar una se ven sus láminas y se pueden compartir, descargar o abrir en el editor. Si el texto del editor es igual a uno ya publicado, "Guardar imágenes" usa las imágenes de GitHub en vez de crearlas de nuevo.
+
+Para quitar una publicación del historial, borra su `.txt` de `publicaciones/` en GitHub.
 
 ## Códigos
 
@@ -51,6 +54,7 @@ Cada cuenta tiene su carpeta en `cuentas/<cuenta>/` con `cuenta.json` (usuario, 
 | `salida/<cuenta>/` | Las imágenes que genera GitHub Actions. |
 | `generar.py` | Genera las imágenes con un navegador invisible (lo usa GitHub Actions). |
 | `scripts/ordenar_cuentas.py` | Renombra fotos de perfil y actualiza la lista de cuentas. |
+| `scripts/indice.py` | Arma el historial (`salida/indice.json`) y las miniaturas. |
 | `fuentes/`, `vendor/` | Tipografías libres (SIL OFL) y librerías para exportar imágenes. |
 
 ## En el PC (opcional)

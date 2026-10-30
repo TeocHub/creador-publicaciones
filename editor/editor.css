@@ -184,3 +184,41 @@ button:focus-visible { outline: 2px solid var(--c-acento); outline-offset: 3px; 
 /* Letras de las cuentas, para mostrar el nombre de arriba con su estilo */
 @font-face { font-family: Fjalla; src: url('../fuentes/FjallaOne-Regular.ttf'); }
 @font-face { font-family: Nunito; src: url('../fuentes/Nunito-Variable.ttf'); font-weight: 300 900; }
+
+/* ---------- Historial: un estante con las portadas ---------- */
+.historial { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--linea); }
+.historial h2 { font: 600 15px Inter, sans-serif; margin: 0 0 12px; }
+.historial h2 small { font-weight: 400; color: var(--tinta-suave); margin-left: 6px; }
+.estante {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity;
+  padding: 6px 2px 18px; scrollbar-width: thin;
+}
+.libro {
+  flex: 0 0 auto; width: 150px; padding: 0; border: 0; border-radius: 0; background: transparent;
+  text-align: left; cursor: pointer; scroll-snap-align: start; color: var(--tinta);
+  display: flex; flex-direction: column; gap: 6px; font: inherit;
+}
+.libro img {
+  width: 150px; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 3px;
+  box-shadow: var(--sombra); background: var(--hoja);
+  transition: transform .2s, box-shadow .2s;
+}
+.libro:hover img, .libro:focus-visible img { transform: translateY(-4px) rotate(-1deg); }
+.libro:focus-visible { outline: none; }
+.libro:focus-visible img { box-shadow: 0 0 0 3px var(--c-acento), var(--sombra); }
+.libro-titulo { font: 600 13.5px/1.3 Inter, sans-serif; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.libro-meta { font-size: 12px; color: var(--tinta-suave); }
+.vacio { margin: 0; font-size: 14px; color: var(--tinta-suave); max-width: 46ch; }
+
+/* ---------- Visor de una publicación ---------- */
+.visor { width: min(980px, calc(100vw - 16px)); }
+.visor header { align-items: flex-start; }
+.visor-fecha { margin: 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--c-acento); font-weight: 600; }
+.visor h2 { font-size: 20px; line-height: 1.25; }
+.visor-carrete { padding: 8px 20px 14px; }
+.visor-carrete img {
+  flex: 0 0 auto; width: min(76vw, 420px); aspect-ratio: 4 / 5; scroll-snap-align: center;
+  border-radius: 4px; box-shadow: var(--sombra); background: var(--mesa); object-fit: cover;
+}
+.visor footer { padding: 0 20px 20px; }
+.visor .estado { margin-top: 10px; }

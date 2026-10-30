@@ -124,7 +124,9 @@ function elegirCuenta(id) {
   $('#nombre').value = leerLocal(`nombre:${id}`) ?? 'nueva-publicacion';
   $('#carrete').innerHTML = '';
   marcos = [];
+  olvidarPendientes();
   pintarFinal();
+  pintarHistorial();
   redibujar().then(tomarColores);
 }
 
@@ -314,32 +316,67 @@ function actualizarContador() {
 
 // ---------- Guardar ----------
 
+// Compartir pide que el toque sea reciente: en el teléfono, crear muchas imágenes tarda tanto
+// que el navegador ya no deja abrir el menú. Por eso se preparan primero y luego se pide otro toque.
+let pendientes = null;
+
 async function guardarImagenes() {
   const boton = $('#guardar');
+  if (pendientes) return entregar(pendientes, `${cuenta.id}-${nombreArchivo()}.zip`, boton, avisar, 'Guardar imágenes');
   boton.disabled = true;
-  avisar('Preparando las imágenes…');
   try {
-    await redibujar();
-    const archivos = await Promise.all(marcos.map(async (f, i) => {
-      const blob = await f.contentWindow.capturar();
-      return new File([blob], `${nombreArchivo()}-${String(i + 1).padStart(2, '0')}.png`, { type: 'image/png' });
-    }));
-    // En el teléfono se abre el menú de compartir: guardar en la galería o mandar directo a Instagram o TikTok.
-    if (navigator.canShare && navigator.canShare({ files: archivos })) {
-      await navigator.share({ files: archivos });
-      avisar('Listo.');
+    // Si GitHub ya generó exactamente este texto, se usan esas imágenes.
+    const publicada = buscarPublicada();
+    let archivos;
+    if (publicada) {
+      avisar('Estas láminas ya están generadas. Descargándolas…');
+      archivos = await bajarPublicada(cuenta.id, publicada, (n, t) => avisar(`Descargando ${n} de ${t}…`));
     } else {
-      const zip = new JSZip();
-      archivos.forEach(a => zip.file(a.name, a));
-      descargar(await zip.generateAsync({ type: 'blob' }), `${cuenta.id}-${nombreArchivo()}.zip`);
-      avisar(`Descargadas ${archivos.length} imágenes en un .zip.`);
+      avisar('Preparando las imágenes…');
+      await redibujar();
+      archivos = [];
+      for (const [i, f] of marcos.entries()) {
+        avisar(`Creando ${i + 1} de ${marcos.length}…`);
+        const blob = await f.contentWindow.capturar();
+        archivos.push(new File([blob], `${nombreArchivo()}-${String(i + 1).padStart(2, '0')}.png`, { type: 'image/png' }));
+      }
+    }
+    if (puedeCompartir(archivos)) {
+      pendientes = archivos;
+      boton.textContent = `Compartir ${archivos.length} imágenes`;
+      avisar('Listas. Toca de nuevo para guardarlas o compartirlas.');
+    } else {
+      await entregar(archivos, `${cuenta.id}-${nombreArchivo()}.zip`, boton, avisar, 'Guardar imágenes');
     }
   } catch (e) {
-    avisar(e.name === 'AbortError' ? '' : 'No se pudieron crear las imágenes. Intenta de nuevo.');
+    avisar(`No se pudieron crear las imágenes (${e.name || 'error'}). Intenta de nuevo.`);
     console.error(e);
   } finally {
     boton.disabled = false;
   }
+}
+
+const puedeCompartir = archivos => !!(navigator.canShare && navigator.canShare({ files: archivos }));
+
+// Abre el menú de compartir; si no se puede, descarga un .zip.
+async function entregar(archivos, nombreZip, boton, decir, textoBoton) {
+  const reiniciar = () => { if (boton === $('#guardar')) { pendientes = null; boton.textContent = textoBoton; } };
+  if (puedeCompartir(archivos)) {
+    try {
+      await navigator.share({ files: archivos });
+      decir('Listo.');
+      reiniciar();
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') { decir(''); return; }
+      console.warn('No se pudo compartir, se descarga un .zip', e);
+    }
+  }
+  const zip = new JSZip();
+  archivos.forEach(a => zip.file(a.name, a));
+  descargar(await zip.generateAsync({ type: 'blob' }), nombreZip);
+  decir(`Descargadas ${archivos.length} imágenes en un .zip.`);
+  reiniciar();
 }
 
 function descargar(blob, nombre) {
@@ -488,15 +525,155 @@ async function descargarCarpeta() {
   descargar(await zip.generateAsync({ type: 'blob' }), `cuenta-${n.id}.zip`);
 }
 
+// ---------- Historial ----------
+
+let indice = {};
+let visorItem = null;
+let visorArchivos = null;
+
+async function cargarIndice() {
+  try {
+    indice = await fetch('salida/indice.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : {});
+  } catch (e) { indice = {}; }
+  if (cuenta) pintarHistorial();
+}
+
+const urlPublicada = (id, item, archivo) => `salida/${encodeURIComponent(id)}/${encodeURIComponent(item.nombre)}/${archivo}?h=${item.huella}`;
+const fechaBonita = iso => new Date(iso).toLocaleDateString('es-CL', { day: 'numeric', month: 'long', year: 'numeric' });
+
+function buscarPublicada() {
+  const h = crc32($('#texto').value.trim());
+  return (indice[cuenta.id] || []).find(x => x.nombre === nombreArchivo() && x.huella === h);
+}
+
+function pintarHistorial() {
+  const items = indice[cuenta.id] || [];
+  $('#historialCuenta').textContent = `@${cuenta.usuario}`;
+  const estante = $('#estante');
+  estante.innerHTML = '';
+  if (!items.length) {
+    estante.innerHTML = '<p class="vacio">Aún no hay publicaciones guardadas en el repositorio para esta cuenta. Cuando subas una, GitHub la deja aquí lista para descargar.</p>';
+    return;
+  }
+  for (const item of items) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'libro';
+    b.innerHTML = `<img loading="lazy" alt=""><span class="libro-titulo"></span><span class="libro-meta"></span>`;
+    b.querySelector('img').src = urlPublicada(cuenta.id, item, 'miniatura.jpg');
+    b.querySelector('.libro-titulo').textContent = item.titulo;
+    b.querySelector('.libro-meta').textContent = `${fechaBonita(item.fecha)} · ${item.laminas} láminas`;
+    b.onclick = () => abrirVisor(item);
+    estante.append(b);
+  }
+}
+
+async function bajarPublicada(id, item, progreso = () => {}) {
+  const archivos = [];
+  for (let i = 1; i <= item.laminas; i++) {
+    progreso(i, item.laminas);
+    const nombre = `lamina-${String(i).padStart(2, '0')}.png`;
+    const blob = await fetch(urlPublicada(id, item, nombre)).then(r => {
+      if (!r.ok) throw new Error('No se encontró ' + nombre);
+      return r.blob();
+    });
+    archivos.push(new File([blob], `${item.nombre}-${String(i).padStart(2, '0')}.png`, { type: 'image/png' }));
+  }
+  return archivos;
+}
+
+async function abrirVisor(item) {
+  visorItem = item;
+  visorArchivos = null;
+  const id = cuenta.id;
+  $('#visorTitulo').textContent = item.titulo;
+  $('#visorFecha').textContent = `${fechaBonita(item.fecha)} · ${item.nombre}`;
+  $('#visorEstado').textContent = '';
+  const carrete = $('#visorCarrete');
+  carrete.innerHTML = '';
+  for (let i = 1; i <= item.laminas; i++) {
+    const img = document.createElement('img');
+    img.alt = `Lámina ${i}`;
+    img.src = urlPublicada(id, item, `lamina-${String(i).padStart(2, '0')}.png`);
+    carrete.append(img);
+  }
+  contarVisor();
+  const compartir = $('#visorCompartir');
+  compartir.disabled = true;
+  compartir.textContent = 'Preparando…';
+  $('#visor').showModal();
+  // Se descargan apenas se abre, así al tocar "Compartir" el menú se abre al instante.
+  try {
+    const archivos = await bajarPublicada(id, item, (n, t) => { compartir.textContent = `Preparando ${n}/${t}…`; });
+    if (visorItem !== item) return;
+    visorArchivos = archivos;
+    compartir.textContent = puedeCompartir(archivos) ? 'Compartir / guardar' : 'Descargar imágenes';
+    compartir.disabled = false;
+  } catch (e) {
+    $('#visorEstado').textContent = 'No se pudieron descargar las imágenes. Puede que GitHub aún las esté publicando; intenta en un minuto.';
+    compartir.textContent = 'No disponible';
+  }
+}
+
+function contarVisor() {
+  const c = $('#visorCarrete');
+  const hijo = c.firstElementChild;
+  const ancho = hijo ? hijo.offsetWidth + 14 : 1;
+  const total = c.children.length;
+  $('#visorContador').textContent = total ? `${Math.min(total, Math.round(c.scrollLeft / ancho) + 1)} / ${total}` : '';
+}
+
+async function editarPublicada() {
+  const item = visorItem;
+  try {
+    const texto = await fetch(`publicaciones/${encodeURIComponent(cuenta.id)}/${encodeURIComponent(item.nombre)}.txt?h=${item.huella}`).then(r => {
+      if (!r.ok) throw new Error();
+      return r.text();
+    });
+    $('#texto').value = texto;
+    $('#nombre').value = item.nombre;
+    guardarBorrador();
+    $('#visor').close();
+    alCambiarTexto();
+    $('#texto').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (e) {
+    $('#visorEstado').textContent = 'No se pudo abrir el texto de esta publicación.';
+  }
+}
+
+$('#cerrarVisor').addEventListener('click', () => $('#visor').close());
+$('#visor').addEventListener('close', () => { visorItem = null; visorArchivos = null; });
+$('#visorCarrete').addEventListener('scroll', contarVisor, { passive: true });
+$('#visorCompartir').addEventListener('click', () => {
+  if (visorArchivos) entregar(visorArchivos, `${cuenta.id}-${visorItem.nombre}.zip`, $('#visorCompartir'), t => { $('#visorEstado').textContent = t; });
+});
+$('#visorZip').addEventListener('click', async () => {
+  const item = visorItem;
+  const decir = t => { $('#visorEstado').textContent = t; };
+  const archivos = visorArchivos || await bajarPublicada(cuenta.id, item, (n, t) => decir(`Descargando ${n} de ${t}…`));
+  const zip = new JSZip();
+  archivos.forEach(a => zip.file(a.name, a));
+  descargar(await zip.generateAsync({ type: 'blob' }), `${cuenta.id}-${item.nombre}.zip`);
+  decir(`Descargadas ${archivos.length} imágenes.`);
+});
+$('#visorEditar').addEventListener('click', editarPublicada);
+
 // ---------- Inicio ----------
 
 let espera;
+function olvidarPendientes() {
+  if (!pendientes) return;
+  pendientes = null;
+  $('#guardar').textContent = 'Guardar imágenes';
+}
+
 function alCambiarTexto() {
+  olvidarPendientes();
   clearTimeout(espera);
   espera = setTimeout(() => { guardarBorrador(); pintarFinal(); redibujar(); }, 350);
 }
 $('#texto').addEventListener('input', alCambiarTexto);
-$('#nombre').addEventListener('change', () => { guardarBorrador(); redibujar(); });
+$('#nombre').addEventListener('change', () => { olvidarPendientes(); guardarBorrador(); redibujar(); });
 $('#carrete').addEventListener('scroll', actualizarContador, { passive: true });
 $('#guardar').addEventListener('click', guardarImagenes);
 $('#github').addEventListener('click', subirAlRepositorio);
@@ -511,6 +688,7 @@ $('#formCuenta [name=foto]').addEventListener('change', async e => {
 });
 
 pintarPiezas();
+cargarIndice();
 cargarCuentas().catch(e => {
   avisar('No se pudieron cargar las cuentas.');
   console.error(e);

@@ -58,8 +58,33 @@
         <button id="github">Subir al repositorio</button>
       </div>
       <p class="estado" id="estado" role="status"></p>
+
+      <section class="historial" aria-labelledby="tituloHistorial">
+        <h2 id="tituloHistorial">Publicadas <small id="historialCuenta"></small></h2>
+        <div class="estante" id="estante"></div>
+      </section>
     </section>
   </main>
+
+  <dialog id="visor" class="dialogo visor">
+    <header>
+      <div>
+        <p class="visor-fecha" id="visorFecha"></p>
+        <h2 id="visorTitulo"></h2>
+      </div>
+      <button type="button" class="cerrar" id="cerrarVisor" aria-label="Cerrar">×</button>
+    </header>
+    <div class="carrete visor-carrete" id="visorCarrete"></div>
+    <p class="contador" id="visorContador"></p>
+    <footer>
+      <div class="acciones">
+        <button class="principal" id="visorCompartir" disabled>Preparando…</button>
+        <button id="visorZip">Descargar .zip</button>
+        <button id="visorEditar">Abrir en el editor</button>
+      </div>
+      <p class="estado" id="visorEstado" role="status"></p>
+    </footer>
+  </dialog>
 
   <dialog id="dialogoCuenta" class="dialogo">
     <form method="dialog" id="formCuenta">

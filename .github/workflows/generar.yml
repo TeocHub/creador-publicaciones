@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # para saber la fecha de cada publicación
 
       - uses: actions/setup-python@v5
         with:
@@ -34,6 +36,9 @@ jobs:
 
       - name: Generar las láminas
         run: python generar.py
+
+      - name: Armar el historial
+        run: python scripts/indice.py
 
       - name: Guardar los cambios en el repositorio
         run: |
