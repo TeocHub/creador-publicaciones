@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Creador de publicaciones</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='3' width='20' height='26' rx='2' fill='%23e9dcc3' stroke='%232a1d14' stroke-width='2'/%3E%3Cpath d='M10 12h12M10 17h9' stroke='%238c2f1f' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="editor/editor.css">
+  <script>
+    // GitHub Pages deja copias guardadas en el navegador. Con esto siempre se carga
+    // la última versión del editor y de la plantilla apenas se publica un cambio.
+    window.VERSION = Date.now();
+    document.write(`<link rel="stylesheet" href="editor/editor.css?v=${VERSION}">`);
+  </script>
 </head>
 <body>
   <header class="banda" id="banda">
@@ -102,6 +107,6 @@
   </dialog>
 
   <script src="vendor/jszip.min.js"></script>
-  <script src="editor/editor.js"></script>
+  <script>document.write(`<script src="editor/editor.js?v=${VERSION}"><\/script>`);</script>
 </body>
 </html>

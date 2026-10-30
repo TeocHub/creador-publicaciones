@@ -2,7 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="base.css">
+  <script>
+    // Versión que manda el editor; así el navegador no usa una plantilla vieja.
+    window.VERSION = new URLSearchParams(location.search).get('v') || Date.now();
+    document.write(`<link rel="stylesheet" href="base.css?v=${VERSION}">`);
+  </script>
   <link rel="stylesheet" id="tema">
 </head>
 <body>
@@ -20,6 +24,6 @@
     <div class="pie"></div>
   </div>
   <script src="../vendor/modern-screenshot.js"></script>
-  <script src="lamina.js"></script>
+  <script>document.write(`<script src="lamina.js?v=${VERSION}"><\/script>`);</script>
 </body>
 </html>

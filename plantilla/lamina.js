@@ -17,7 +17,7 @@ async function cargarCuenta(id) {
   if (local) {
     c = { ...local.cuenta, fotoUrl: local.foto || null, temaCss: local.tema };
   } else {
-    c = await fetch(`${RAIZ_CUENTAS}${id}/cuenta.json`).then(r => r.json());
+    c = await fetch(`${RAIZ_CUENTAS}${id}/cuenta.json`, { cache: 'no-cache' }).then(r => r.json());
     c.fotoUrl = c.perfil ? `${RAIZ_CUENTAS}${id}/${c.perfil}` : null;
   }
   c.id = id;
@@ -35,7 +35,7 @@ window.listo = (async () => {
   } else {
     await new Promise(res => {
       link.onload = res; link.onerror = res;
-      link.href = `${RAIZ_CUENTAS}${cuentaId}/tema.css`;
+      link.href = `${RAIZ_CUENTAS}${cuentaId}/tema.css?v=${window.VERSION || Date.now()}`;
     });
   }
   await document.fonts.ready;

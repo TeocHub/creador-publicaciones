@@ -68,9 +68,9 @@ const nombreArchivo = () =>
 
 async function cargarCuentas() {
   try { Object.assign(window.CUENTAS_LOCALES, JSON.parse(leerLocal('cuentasLocales') || '{}')); } catch (e) {}
-  const ids = await fetch('cuentas/cuentas.json').then(r => r.json());
+  const ids = await fetch('cuentas/cuentas.json', { cache: 'no-cache' }).then(r => r.json());
   const delRepo = await Promise.all(ids.map(async id => {
-    const c = await fetch(`cuentas/${id}/cuenta.json`).then(r => r.json());
+    const c = await fetch(`cuentas/${id}/cuenta.json`, { cache: 'no-cache' }).then(r => r.json());
     return { ...c, id, foto: c.perfil ? `cuentas/${id}/${c.perfil}` : null };
   }));
   // Si una cuenta del navegador ya se subió al repositorio, manda la del repositorio.
@@ -274,7 +274,7 @@ function nuevoMarco(destino, id) {
   caja.className = 'marco-prev';
   const f = document.createElement('iframe');
   f.title = 'Lámina';
-  f.src = `plantilla/lamina.html?cuenta=${encodeURIComponent(id)}`;
+  f.src = `plantilla/lamina.html?cuenta=${encodeURIComponent(id)}&v=${window.VERSION || Date.now()}`;
   f.cargado = new Promise(res => f.addEventListener('load', res, { once: true }));
   caja.append(f);
   destino.append(caja);
