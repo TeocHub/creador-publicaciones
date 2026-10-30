@@ -1,0 +1,27 @@
+{
+ "intentodocente": [
+  {
+   "nombre": "30-10",
+   "titulo": "¿Cómo sabes qué es real?",
+   "fecha": "2026-10-30T23:34:49+00:00",
+   "laminas": 12,
+   "huella": 2325362320
+  },
+  {
+   "nombre": "ejemplo",
+   "titulo": "¿Para qué sirve equivocarse en clases?",
+   "fecha": "2026-10-30T21:52:37+00:00",
+   "laminas": 5,
+   "huella": 2657267664
+  }
+ ],
+ "teoc.books": [
+  {
+   "nombre": "capitulo-03",
+   "titulo": "¿Qué era una chingana?",
+   "fecha": "2026-10-30T21:52:37+00:00",
+   "laminas": 6,
+   "huella": 2921776650
+  }
+ ]
+}
