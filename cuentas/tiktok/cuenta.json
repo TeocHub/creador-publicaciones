@@ -1,7 +1,11 @@
 {
   "usuario": "tu.usuario",
   "red": "tiktok",
-  "nombre": ["tu.", "usuario"],
+  "nombre": [
+    "tu.",
+    "usuario"
+  ],
+  "perfil": "perfil.jpg",
   "llamado": "sígueme para más",
   "pie": "tiktok"
 }
