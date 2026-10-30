@@ -9,6 +9,9 @@ on:
       - "publicaciones/**/*.txt"
       - "plantilla/**"
       - "cuentas/**"
+      - "scripts/**"
+      - "generar.py"
+      - ".github/workflows/generar.yml"
   workflow_dispatch:
 
 permissions:
