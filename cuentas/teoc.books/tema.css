@@ -1,17 +1,51 @@
-/* teoc.books — papel antiguo, tinta y lacre */
+/* teoc.books — un libro antiguo: pergamino, tinta sepia, marco doble y sello de lacre */
 @font-face { font-family: Lora; src: url('../../fuentes/Lora-Variable.ttf'); font-weight: 400 700; }
 @font-face { font-family: Lora; font-style: italic; src: url('../../fuentes/Lora-Italic-Variable.ttf'); font-weight: 400 700; }
 :root {
-  --fondo: #e9dcc3;
-  --fondo-2: #d6c29f;
-  --tinta: #2a1d14;
-  --tinta-suave: #5b4636;
-  --acento: #8c2f1f;
-  --acento-2: #2a1d14;
+  --fondo: #e6d5b3;
+  --fondo-2: #c9ad7f;
+  --tinta: #2b1a0e;
+  --tinta-suave: #5e4430;
+  --acento: #7d1f14;
+  --acento-2: #2b1a0e;
   --fuente-titulo: Lora, serif;
   --fuente-texto: Lora, serif;
   --peso-titulo: 600;
-  --grano: .55;
-  --vineta: rgba(60, 35, 15, .45);
-  --marco: rgba(42, 29, 20, .35);
+  --grano: .7;
+  --vineta: rgba(70, 38, 12, .6);
+  --marco: rgba(43, 26, 14, .55);
 }
+/* Marco doble de imprenta */
+.marco { inset: 56px; border: 5px double var(--marco); }
+.marco::after { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(43, 26, 14, .25); }
+.pie { font-variant: small-caps; text-transform: none; letter-spacing: .12em; font-size: 26px; justify-content: center; gap: 24px; }
+.pie span:first-child::after { content: '  ·'; }
+
+.portada { text-align: center; }
+.portada .volanta { font-variant: small-caps; text-transform: none; letter-spacing: .2em; font-size: 32px; }
+.portada .volanta::before, .portada .volanta::after { content: ' ❦ '; color: var(--acento); }
+.portada h1 { font-weight: 600; transform-origin: center; }
+.portada .bajada { font-size: 42px; }
+
+/* Capítulos en números romanos */
+.dato { text-align: center; }
+.dato .numero { font-size: 0; margin-bottom: 26px; opacity: 1; }
+.dato .numero::before { content: 'Capítulo ' attr(data-romano); font-size: 34px; font-style: normal; letter-spacing: .22em; text-transform: uppercase; }
+.dato .raya.corta { margin-left: auto; margin-right: auto; }
+.dato .principal { font-size: 56px; }
+.dato { text-align: left; }
+.dato .numero::before { display: block; text-align: center; }
+
+.cita .comilla { font-size: 64px; height: auto; margin-bottom: 40px; }
+.cita .comilla::before { content: '— ❦ —'; }
+.cita .comilla { color: var(--acento); font-size: 0; }
+.cita .comilla::before { font-size: 60px; }
+.cita .frase { font-size: 66px; }
+
+/* Sello de lacre relleno */
+.cierre .sello polyline:first-child { fill: var(--acento); opacity: .92; stroke: #5a140c; }
+.cierre .sello polyline:last-child { stroke: rgba(255, 220, 200, .55); }
+
+.cuenta .foto { border: 10px double var(--tinta); outline: 0; box-shadow: 0 0 0 14px var(--fondo), 0 0 0 16px var(--acento); }
+.cuenta .usuario { font-weight: 600; }
+.cuenta .llamado { font-style: italic; }

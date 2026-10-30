@@ -124,6 +124,11 @@ function iconosTiktok(r) {
     <svg viewBox="0 0 128 116"><path ${t} d="M74 ${14 + +j()} L118 54 L74 94 V72 C44 70 24 80 10 102 C14 66 36 40 74 36 Z"/></svg>`;
 }
 
+function romano(n) {
+  return [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]
+    .reduce((t, [v, r]) => { while (n >= v) { t += r; n -= v; } return t; }, '');
+}
+
 // ---------- Diseños por tipo ----------
 
 const DISENOS = {
@@ -136,7 +141,7 @@ const DISENOS = {
     </div>`,
   dato: (l, n, r, a, nDato) => `
     <div class="dato">
-      <span class="numero">${String(nDato).padStart(2, '0')}</span>
+      <span class="numero" data-romano="${romano(nDato)}" data-n="${nDato}">${String(nDato).padStart(2, '0')}</span>
       <p class="principal">${limpio(l[0])}</p>
       ${l.length > 1 ? `<svg class="raya corta" viewBox="0 0 300 20" preserveAspectRatio="none">${trazo(r, 6, 294, 10)}</svg>
       <p class="secundario">${limpio(l.slice(1).join(' '))}</p>` : ''}
