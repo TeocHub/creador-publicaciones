@@ -51,14 +51,14 @@ const DISENOS = {
     <div class="portada">
       <p class="volanta">Historia real · ficción</p>
       <h1 style="transform:rotate(${r(-1.2, 1.2).toFixed(2)}deg)">${l[0]}</h1>
-      <svg class="raya" viewBox="0 0 600 20">${trazo(r, 10, 590, 10, 3)}</svg>
+      <svg class="raya" viewBox="0 0 600 20" preserveAspectRatio="none">${trazo(r, 10, 590, 10, 3)}</svg>
       <p class="bajada">${l[1] ?? ''}</p>
     </div>`,
   dato: (l, n, r) => `
     <div class="dato">
       <span class="numero">${String(n - 1).padStart(2, '0')}</span>
       <p class="principal">${l[0]}</p>
-      <svg class="raya corta" viewBox="0 0 300 20">${trazo(r, 6, 294, 10)}</svg>
+      <svg class="raya corta" viewBox="0 0 300 20" preserveAspectRatio="none">${trazo(r, 6, 294, 10)}</svg>
       <p class="secundario">${l.slice(1).join(' ')}</p>
     </div>`,
   cita: (l, n, r) => `
