@@ -23,7 +23,10 @@ const PIEZAS_LAMINAS = [
   { codigo: '--- dato', desc: 'Una idea numerada y un detalle más pequeño.', texto: '--- dato\nIdea principal.\nDetalle que la acompaña.' },
   { codigo: '--- cita', desc: 'Una frase destacada y quién la dijo.', texto: '--- cita\nLa frase.\nQuién la dijo' },
   { codigo: '--- cierre', desc: 'Invitación final y dónde seguir.', texto: '--- cierre\nInvitación.\nDónde encontrar más' },
-  { codigo: '*palabra*', desc: 'Destaca una palabra con el color de la cuenta.', envolver: true },
+  { codigo: '*palabra*', desc: 'Destaca una palabra con el color de la cuenta.', envolver: '*' },
+  { codigo: '**negrita**', desc: 'Pone el texto en negrita.', envolver: '**' },
+  { codigo: '_cursiva_', desc: 'Pone el texto en cursiva.', envolver: '_' },
+  { codigo: '~tachado~', desc: 'Tacha el texto, como una corrección.', envolver: '~' },
   { codigo: '# nota', desc: 'Una nota para ti. No aparece en las láminas.', texto: '# ' },
 ];
 const PIEZAS_AJUSTES = [
@@ -238,9 +241,10 @@ function insertar(p) {
   const { selectionStart: a, selectionEnd: z, value: v } = ta;
   let nuevo, cursor;
   if (p.envolver) {
+    const m = p.envolver;
     const sel = v.slice(a, z) || 'palabra';
-    nuevo = v.slice(0, a) + `*${sel}*` + v.slice(z);
-    cursor = a + sel.length + 2;
+    nuevo = v.slice(0, a) + m + sel + m + v.slice(z);
+    cursor = a + sel.length + m.length * 2;
   } else {
     const antes = v.slice(0, a);
     const sep = antes === '' || antes.endsWith('\n\n') ? '' : antes.endsWith('\n') ? '\n' : '\n\n';
