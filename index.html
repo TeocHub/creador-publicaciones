@@ -8,15 +8,25 @@
   <link rel="stylesheet" href="editor/editor.css">
 </head>
 <body>
-  <header class="cabecera">
-    <h1>Creador de publicaciones</h1>
-    <p>Escribe, mira cómo queda y guarda las láminas.</p>
+  <header class="banda" id="banda">
+    <div class="banda-dentro">
+      <div class="identidad">
+        <div class="foto-grande" id="fotoGrande"></div>
+        <div>
+          <p class="red" id="redCuenta"></p>
+          <h1 id="nombreCuenta">Creador de publicaciones</h1>
+        </div>
+      </div>
+      <div class="cuentas" id="cuentas" role="radiogroup" aria-label="Cuenta"></div>
+    </div>
   </header>
 
   <main class="mesa">
     <section class="escritorio">
-      <div class="cuentas" id="cuentas" role="radiogroup" aria-label="Cuenta de destino"></div>
-      <p class="cuenta-elegida" id="cuentaElegida"></p>
+      <div class="final">
+        <span>Lámina final</span>
+        <div class="final-opciones" id="finalOpciones" role="radiogroup" aria-label="Lámina final"></div>
+      </div>
 
       <label class="campo-nombre">
         <span>Nombre</span>
@@ -25,15 +35,14 @@
 
       <div class="hoja">
         <textarea id="texto" spellcheck="true" aria-label="Texto de la publicación"></textarea>
-        <details class="ayuda">
-          <summary>¿Cómo se escribe?</summary>
-          <div class="ayuda-cuerpo">
-            <p>Cada lámina empieza con <code>---</code> y su tipo: <code>portada</code>, <code>dato</code>, <code>cita</code> o <code>cierre</code>. Debajo van una o dos frases.</p>
-            <p>Antes de la primera lámina puedes poner ajustes: <code>pie:</code> cambia el texto de abajo y <code>volanta:</code> agrega una línea pequeña sobre el título. <code>final: no</code> quita la lámina de la cuenta.</p>
-            <p>Encierra una palabra entre asteriscos para *destacarla*.</p>
-          </div>
-        </details>
       </div>
+
+      <section class="piezas" aria-labelledby="tituloPiezas">
+        <h2 id="tituloPiezas">Códigos <small>toca uno para insertarlo donde está el cursor</small></h2>
+        <div class="piezas-grupo" id="piezasLaminas"></div>
+        <h3>Ajustes <small>van antes de la primera lámina</small></h3>
+        <div class="piezas-grupo" id="piezasAjustes"></div>
+      </section>
     </section>
 
     <section class="vista">
@@ -46,6 +55,51 @@
       <p class="estado" id="estado" role="status"></p>
     </section>
   </main>
+
+  <dialog id="dialogoCuenta" class="dialogo">
+    <form method="dialog" id="formCuenta">
+      <header>
+        <h2>Nueva cuenta</h2>
+        <button type="button" class="cerrar" id="cerrarCuenta" aria-label="Cerrar">×</button>
+      </header>
+      <div class="dialogo-cuerpo">
+        <div class="dialogo-campos">
+          <label>Usuario <input name="usuario" required placeholder="mi.cuenta" autocomplete="off" spellcheck="false"></label>
+          <label>Red
+            <select name="red"><option value="instagram">Instagram</option><option value="tiktok">TikTok</option></select>
+          </label>
+          <label class="ancho">Nombre en dos colores <input name="nombre" placeholder="mi|cuenta" autocomplete="off" spellcheck="false">
+            <small>Separa con | dónde cambia el color.</small></label>
+          <label class="ancho">Frase final <input name="llamado" value="like, comenta, comparte y guarda"></label>
+          <label>Color principal <input type="color" name="acento" value="#e2671f"></label>
+          <label>Color secundario <input type="color" name="acento2" value="#3d5a6b"></label>
+          <label>Fondo
+            <select name="fondo">
+              <option value="papel">Papel antiguo</option>
+              <option value="claro">Claro</option>
+              <option value="oscuro">Oscuro</option>
+            </select>
+          </label>
+          <label>Letra
+            <select name="letra">
+              <option value="clasica">Clásica (Lora)</option>
+              <option value="escolar">Condensada (Fjalla + Nunito)</option>
+              <option value="moderna">Moderna (Inter)</option>
+            </select>
+          </label>
+          <label class="ancho">Foto de perfil <input type="file" name="foto" accept="image/*"></label>
+        </div>
+        <div class="dialogo-vista"><div class="marco-prev" id="vistaCuenta"></div></div>
+      </div>
+      <footer>
+        <p class="nota">Se guarda en este navegador para usarla ya. Para que quede en el repositorio, descarga la carpeta y súbela a <code>cuentas/</code> en GitHub.</p>
+        <div class="acciones">
+          <button type="button" id="descargarCuenta">Descargar carpeta</button>
+          <button type="submit" class="principal" id="guardarCuenta">Guardar cuenta</button>
+        </div>
+      </footer>
+    </form>
+  </dialog>
 
   <script src="vendor/jszip.min.js"></script>
   <script src="editor/editor.js"></script>

@@ -1,0 +1,21 @@
+/* tiktok — fondo oscuro con los acentos cian y rosa de la app */
+@font-face { font-family: Inter; src: url('../../fuentes/Inter-Variable.ttf'); font-weight: 300 900; }
+:root {
+  --fondo: #17171a;
+  --fondo-2: #0b0b0d;
+  --tinta: #f4f4f2;
+  --tinta-suave: #a3a3a8;
+  --acento: #fe2c55;
+  --acento-2: #25f4ee;
+  --fuente-titulo: Inter, sans-serif;
+  --fuente-texto: Inter, sans-serif;
+  --peso-titulo: 800;
+  --grano: .12;
+  --vineta: rgba(0, 0, 0, .55);
+  --marco: transparent;
+}
+.grano { mix-blend-mode: screen; }
+.portada h1 { letter-spacing: -.035em; }
+.dato .numero { font-style: normal; font-weight: 800; color: var(--acento-2); }
+.cita .frase { font-style: normal; font-weight: 600; }
+.cuenta .foto { border-color: var(--acento); outline-color: var(--acento-2); outline-offset: 2px; }

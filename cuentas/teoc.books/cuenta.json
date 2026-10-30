@@ -1,7 +1,11 @@
 {
   "usuario": "teoc.books",
-  "nombre": ["teoc", ".books"],
-  "perfil": "perfil.png",
+  "red": "instagram",
+  "nombre": [
+    "teoc",
+    ".books"
+  ],
+  "perfil": "perfil.jpg",
   "llamado": "guarda y comparte esta historia",
   "pie": "teoc.books"
 }

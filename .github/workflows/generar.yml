@@ -1,5 +1,6 @@
-# Cada vez que subes o cambias un .txt en publicaciones/, GitHub genera las
-# imágenes en sus propios servidores y las guarda en salida/. Gratis, sin PC.
+# Cada vez que cambia una publicación, una cuenta o la plantilla, GitHub:
+# 1. ordena las cuentas (renombra fotos de perfil y actualiza la lista), y
+# 2. genera las imágenes en salida/. Gratis, sin usar tu PC.
 name: Generar láminas
 
 on:
@@ -23,18 +24,22 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Instalar Playwright y Chromium
+      - name: Instalar dependencias
         run: |
-          pip install playwright
+          pip install playwright pillow
           python -m playwright install --with-deps chromium
+
+      - name: Ordenar cuentas
+        run: python scripts/ordenar_cuentas.py
 
       - name: Generar las láminas
         run: python generar.py
 
-      - name: Guardar las imágenes en el repositorio
+      - name: Guardar los cambios en el repositorio
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add salida
-          git diff --cached --quiet || git commit -m "Láminas generadas"
+          git add cuentas salida
+          git diff --cached --quiet || git commit -m "Cuentas ordenadas y láminas generadas"
+          git pull --rebase -q
           git push

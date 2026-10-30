@@ -1,7 +1,10 @@
 {
   "usuario": "cabsamot",
-  "nombre": ["cabsa", "mot"],
-  "perfil": "perfil.png",
-  "llamado": "nos vemos en la próxima",
+  "red": "instagram",
+  "nombre": [
+    "cabsamot"
+  ],
+  "perfil": "perfil.jpg",
+  "llamado": "guarda esto para después",
   "pie": "cabsamot"
 }

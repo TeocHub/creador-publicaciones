@@ -1,7 +1,11 @@
 {
   "usuario": "intentodocente",
-  "nombre": ["intento", "docente"],
-  "perfil": "perfil.png",
+  "red": "instagram",
+  "nombre": [
+    "intento",
+    "docente"
+  ],
+  "perfil": "perfil.jpg",
   "llamado": "like, comenta, comparte y guarda",
   "pie": "intentodocente"
 }

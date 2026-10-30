@@ -33,6 +33,9 @@ def servidor():
 
 def generar(pagina, puerto, archivo):
     cuenta = archivo.parent.name
+    if not (RAIZ / "cuentas" / cuenta / "cuenta.json").exists():
+        print(f"{cuenta}/{archivo.name}: la cuenta no existe en cuentas/, se omite")
+        return
     texto = archivo.read_text(encoding="utf-8")
     base = zlib.crc32(archivo.name.encode())
     destino = RAIZ / "salida" / cuenta / archivo.stem
