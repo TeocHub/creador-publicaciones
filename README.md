@@ -1,13 +1,22 @@
-# Láminas — Entre dos Mundos
+# Creador de publicaciones
 
-Generador de carruseles para Instagram y TikTok (1080 × 1350) a partir de un archivo de texto.
+Carruseles para Instagram y TikTok (1080 × 1350) a partir de texto, con el estilo de cada cuenta.
 
-## Cómo se usa
+**Editor:** https://teochub.github.io/creador-publicaciones/
 
-1. Crear un archivo en `publicaciones/`, por ejemplo `capitulo-04.txt`.
-2. Escribir una lámina por bloque. La palabra después de `---` es el tipo:
+## Usarlo desde el editor
+
+1. Toca la foto de la cuenta: teoc.books, intentodocente o cabsamot.
+2. Escribe la publicación. La vista previa se actualiza sola y el borrador queda guardado en el navegador.
+3. **Guardar imágenes:** en el teléfono abre el menú de compartir (guardar en la galería o mandar directo a Instagram). En el computador descarga un `.zip`.
+4. **Subir al repositorio** (opcional): abre GitHub con el archivo ya escrito. Al confirmar, GitHub genera también las imágenes en `salida/<cuenta>/<nombre>/`.
+
+## Cómo se escribe
 
 ```
+pie: Entre dos Mundos
+volanta: Historia real · ficción
+
 --- portada
 Título grande
 Subtítulo
@@ -17,32 +26,47 @@ Frase principal.
 Frase secundaria, más pequeña.
 
 --- cita
-Una frase real del capítulo.
-Entre dos Mundos · Cap. 4
+Una frase real.
+Quién la dijo
 
 --- cierre
 Invitación a leer.
-Capítulo 4 en Wattpad · Teoc679
+Dónde encontrarlo
 ```
 
-3. Guardar y subir a GitHub. En unos dos minutos las imágenes aparecen en `salida/capitulo-04/`.
+Los ajustes antes de la primera lámina son opcionales: `pie:` cambia el texto inferior, `volanta:` pone una línea pequeña sobre el título y `final: no` quita la lámina de la cuenta. Las líneas con `#` son notas. Una palabra entre `*asteriscos*` sale destacada.
 
-## Qué hace cada archivo
+Al final de cada carrusel se agrega sola la lámina de la cuenta: foto de perfil, nombre y botones.
+
+## Cuentas
+
+Cada cuenta tiene su carpeta en `cuentas/<cuenta>/`:
 
 | Archivo | Para qué sirve |
 |---|---|
-| `plantilla/estilo.css` | Colores, tipografía y medidas. Cambiar la estética es tocar solo este archivo. |
-| `plantilla/lamina.js` | Lee el texto y arma cada lámina, con trazos y sellos que varían un poco cada vez. |
-| `plantilla/lamina.html` | El "papel": grano, viñeta, marco y pie. |
-| `generar.py` | Abre la plantilla en un navegador invisible y saca una foto de cada lámina. |
-| `.github/workflows/generar.yml` | Hace que GitHub ejecute `generar.py` solo cuando cambias una publicación. |
+| `perfil.png` | Foto de perfil original, cuadrada o no. Se recorta en círculo automáticamente. |
+| `cuenta.json` | Usuario, cómo se parte el nombre en dos colores, frase final y pie por defecto. |
+| `tema.css` | Colores y tipografías de la cuenta. |
 
-## Usarlo en el PC (opcional)
+Para cambiar la foto, sube la imagen a la carpeta de la cuenta con el nombre `perfil.png`. Si es `.jpg`, cambia `"perfil"` en `cuenta.json`. Mientras no haya foto se muestra la inicial.
+
+Para agregar una cuenta nueva, copia una carpeta existente, cambia sus archivos y suma su nombre a `cuentas/cuentas.json`.
+
+## Estructura
+
+| Ruta | Qué es |
+|---|---|
+| `index.html`, `editor/` | El editor (GitHub Pages). |
+| `plantilla/` | El diseño de las láminas: `lamina.html`, `base.css` y `lamina.js`. |
+| `publicaciones/<cuenta>/` | Los textos de cada publicación. |
+| `salida/<cuenta>/` | Las imágenes que genera GitHub Actions. |
+| `generar.py` | Genera las imágenes con un navegador invisible (lo usa GitHub Actions). |
+| `fuentes/`, `vendor/` | Tipografías libres (SIL OFL) y librerías para exportar imágenes. |
+
+## En el PC (opcional)
 
 ```
 pip install playwright
 python3 -m playwright install chromium
-python3 generar.py publicaciones/capitulo-03.txt
+python3 generar.py
 ```
-
-La tipografía Lora tiene licencia libre (SIL Open Font License), así que puede ir dentro del repositorio.

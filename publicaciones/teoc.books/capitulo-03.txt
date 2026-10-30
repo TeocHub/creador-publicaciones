@@ -1,5 +1,9 @@
 # Una lámina por bloque. La primera palabra después de --- es el tipo:
 # portada, dato, cita o cierre. Lo demás es solo texto.
+# Antes del primer --- se pueden poner ajustes como pie: o volanta:
+
+pie: Entre dos Mundos
+volanta: Historia real · ficción
 
 --- portada
 ¿Qué era una chingana?

@@ -1,0 +1,17 @@
+/* teoc.books — papel antiguo, tinta y lacre */
+@font-face { font-family: Lora; src: url('../../fuentes/Lora-Variable.ttf'); font-weight: 400 700; }
+@font-face { font-family: Lora; font-style: italic; src: url('../../fuentes/Lora-Italic-Variable.ttf'); font-weight: 400 700; }
+:root {
+  --fondo: #e9dcc3;
+  --fondo-2: #d6c29f;
+  --tinta: #2a1d14;
+  --tinta-suave: #5b4636;
+  --acento: #8c2f1f;
+  --acento-2: #2a1d14;
+  --fuente-titulo: Lora, serif;
+  --fuente-texto: Lora, serif;
+  --peso-titulo: 600;
+  --grano: .55;
+  --vineta: rgba(60, 35, 15, .45);
+  --marco: rgba(42, 29, 20, .35);
+}

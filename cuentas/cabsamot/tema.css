@@ -1,0 +1,18 @@
+/* cabsamot — cuenta personal, sobria (provisional: cámbiala a tu gusto) */
+@font-face { font-family: Inter; src: url('../../fuentes/Inter-Variable.ttf'); font-weight: 300 900; }
+:root {
+  --fondo: #f1efea;
+  --fondo-2: #e2ded5;
+  --tinta: #1b1b1a;
+  --tinta-suave: #6b685f;
+  --acento: #2f5d50;
+  --acento-2: #1b1b1a;
+  --fuente-titulo: Inter, sans-serif;
+  --fuente-texto: Inter, sans-serif;
+  --peso-titulo: 700;
+  --grano: .35;
+  --vineta: rgba(0, 0, 0, .12);
+  --marco: transparent;
+}
+.portada h1 { letter-spacing: -.03em; }
+.dato .numero { font-style: normal; font-weight: 300; }

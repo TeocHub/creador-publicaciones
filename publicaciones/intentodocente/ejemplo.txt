@@ -1,0 +1,17 @@
+# Publicación de ejemplo para ver el estilo de la cuenta. Puedes borrarla.
+volanta: Para pensar
+
+--- portada
+¿Para qué sirve *equivocarse* en clases?
+Un error bien usado enseña más que diez aciertos
+
+--- dato
+El error muestra cómo está pensando el estudiante.
+Corregirlo sin preguntar el porqué es perder esa información.
+
+--- dato
+Preguntar "¿cómo llegaste a eso?" convierte el error en conversación.
+
+--- cita
+Equivocarse no es lo contrario de aprender: es parte del camino.
+intentodocente

@@ -5,8 +5,9 @@ name: Generar láminas
 on:
   push:
     paths:
-      - "publicaciones/**.txt"
+      - "publicaciones/**/*.txt"
       - "plantilla/**"
+      - "cuentas/**"
   workflow_dispatch:
 
 permissions:

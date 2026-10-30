@@ -1,0 +1,20 @@
+/* intentodocente — papel gastado, naranja y azul pizarra */
+@font-face { font-family: Fjalla; src: url('../../fuentes/FjallaOne-Regular.ttf'); }
+@font-face { font-family: Nunito; src: url('../../fuentes/Nunito-Variable.ttf'); font-weight: 300 900; }
+:root {
+  --fondo: #f6ead2;
+  --fondo-2: #e6d2ad;
+  --tinta: #1f1a14;
+  --tinta-suave: #5d6f7c;
+  --acento: #e2671f;
+  --acento-2: #6a8aa1;
+  --fuente-titulo: Fjalla, sans-serif;
+  --fuente-texto: Nunito, sans-serif;
+  --peso-titulo: 400;
+  --grano: .6;
+  --vineta: rgba(110, 70, 25, .5);
+  --marco: transparent;
+}
+.cuenta .foto { border-color: #175665; }
+.portada h1, .dato .numero, .cita .comilla { font-style: normal; }
+.dato .principal { font-weight: 700; }

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creador de publicaciones</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='3' width='20' height='26' rx='2' fill='%23e9dcc3' stroke='%232a1d14' stroke-width='2'/%3E%3Cpath d='M10 12h12M10 17h9' stroke='%238c2f1f' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="editor/editor.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Creador de publicaciones</h1>
+    <p>Escribe, mira cómo queda y guarda las láminas.</p>
+  </header>
+
+  <main class="mesa">
+    <section class="escritorio">
+      <div class="cuentas" id="cuentas" role="radiogroup" aria-label="Cuenta de destino"></div>
+      <p class="cuenta-elegida" id="cuentaElegida"></p>
+
+      <label class="campo-nombre">
+        <span>Nombre</span>
+        <input id="nombre" type="text" value="nueva-publicacion" spellcheck="false" autocomplete="off">
+      </label>
+
+      <div class="hoja">
+        <textarea id="texto" spellcheck="true" aria-label="Texto de la publicación"></textarea>
+        <details class="ayuda">
+          <summary>¿Cómo se escribe?</summary>
+          <div class="ayuda-cuerpo">
+            <p>Cada lámina empieza con <code>---</code> y su tipo: <code>portada</code>, <code>dato</code>, <code>cita</code> o <code>cierre</code>. Debajo van una o dos frases.</p>
+            <p>Antes de la primera lámina puedes poner ajustes: <code>pie:</code> cambia el texto de abajo y <code>volanta:</code> agrega una línea pequeña sobre el título. <code>final: no</code> quita la lámina de la cuenta.</p>
+            <p>Encierra una palabra entre asteriscos para *destacarla*.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="vista">
+      <div class="carrete" id="carrete" aria-live="polite"></div>
+      <p class="contador" id="contador"></p>
+      <div class="acciones">
+        <button class="principal" id="guardar">Guardar imágenes</button>
+        <button id="github">Subir al repositorio</button>
+      </div>
+      <p class="estado" id="estado" role="status"></p>
+    </section>
+  </main>
+
+  <script src="vendor/jszip.min.js"></script>
+  <script src="editor/editor.js"></script>
+</body>
+</html>
