@@ -1,0 +1,22 @@
+# Una lámina por bloque. La primera palabra después de --- es el tipo:
+# portada, dato, cita o cierre. Lo demás es solo texto.
+
+--- portada
+¿Qué era una chingana?
+Lo real detrás del capítulo 3
+
+--- dato
+En el Chile colonial y del siglo XIX, la chingana era el lugar de fiesta del pueblo.
+Música, baile, comida y alcohol en un rancho o una casa de barrio.
+
+--- dato
+Ahí se mezclaba quien no entraba a los salones de la élite: artesanos, peones, soldados, vendedoras.
+Las autoridades intentaron regularlas y cerrarlas más de una vez.
+
+--- cita
+[Reemplazar por una frase real del capítulo 3]
+Entre dos Mundos · Cap. 3
+
+--- cierre
+En Vallarreal la chingana existe, y ahí se sirve Aloja.
+Capítulo 3 en Wattpad · Teoc679
