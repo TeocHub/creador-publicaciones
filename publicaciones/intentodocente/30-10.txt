@@ -1,0 +1,45 @@
+# Post 4 de la serie: cómo verificar lo que ves
+# Fuente del 59%: Columbia University e Inria, 2016
+volanta: Cierre de la serie
+
+--- portada
+¿Cómo sabes qué es *real*?
+Casi nadie verifica lo que ve. Y no es por lo que crees.
+
+--- dato
+No es por ~ignorancia~. Es por *flojera*.
+Y es humano: dar like, compartir y seguir está a **un toque**. Verificar es lo único que te pide _salir_ del feed.
+
+--- cita
+El 59% de los enlaces compartidos en redes *nunca se abrieron*.
+Columbia University e Inria, 2016
+
+--- dato
+Usamos *atajos* para no hacer el esfuerzo.
+_«Si lo compartió tanta gente, debe ser cierto»_. _«Si lo dice el presidente, debe saber»_. Confiar en el cargo **también es flojera**.
+
+--- dato
+Revisa ~todo~ solo lo que te *remueve*.
+Lo que te enoja o te da la razón. Para eso bastan **cuatro preguntas**.
+
+--- dato
+¿Qué *gana* con que lo creas?
+**0 clics.** Un canal, un influencer, un senador o un presidente: todos tienen intereses. Un cargo _no_ es una prueba.
+
+--- dato
+¿Cómo lo *sabe*?
+**0 clics.** ¿Muestra datos, documentos o una fuente? ¿O solo te pide que le creas _por ser quien es_?
+
+--- dato
+¿Alguien más lo *confirma*?
+**1 clic.** Abre otra pestaña y busca fuentes que no ganen "nada" con que les creas. Que muchos lo _repitan_ no es lo mismo que muchos lo **confirmen**.
+
+--- dato
+Vuelve al *origen*.
+**1 clic.** ¿Una captura o un video recortado? Busca dónde apareció primero. ¿Te lo dijo una IA? **Pídele la fuente** y revísala tú.
+
+--- cita
+Dudar ~es desconfiar de todo~ es *pedir pruebas*, venga de quien venga.
+
+--- cierre
+**Cuatro preguntas y un par de clics.** Guárdalo para la próxima vez que algo te indigne.
