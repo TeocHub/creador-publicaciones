@@ -67,10 +67,24 @@ function leerPublicacion(texto) {
   return { ajustes, laminas };
 }
 
-// Escapa el HTML y permite *cursiva* para destacar palabras.
+// Escapa el HTML y aplica los formatos del texto:
+//   *destacar*   palabra con el color de la cuenta
+//   **negrita**  _cursiva_  ~tachado~ (o ~~tachado~~)
+// El guion bajo solo cuenta al borde de una palabra, así @mi_cuenta no se toca.
 function limpio(t = '') {
   return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          .replace(/\*(.+?)\*/g, '<em>$1</em>');
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.+?)\*/g, '<em>$1</em>')
+          .replace(/~~(.+?)~~/g, '<s>$1</s>')
+          .replace(/~(.+?)~/g, '<s>$1</s>')
+          .replace(/(^|[^\p{L}\p{N}_])_(?=\S)(.+?)(?<=\S)_(?![\p{L}\p{N}_])/gu, '$1<i>$2</i>');
+}
+
+// La cursiva dentro de un texto que ya va en cursiva se marca al revés (recta).
+function invertirCursivas(raiz) {
+  raiz.querySelectorAll('i').forEach(el => {
+    if (getComputedStyle(el.parentElement).fontStyle !== 'normal') el.style.fontStyle = 'normal';
+  });
 }
 
 // ---------- Trazos a mano ----------
@@ -192,6 +206,7 @@ async function dibujar(texto, n, semilla = 1) {
   const lienzo = document.querySelector('.lienzo');
   lienzo.classList.toggle('lleno', esCuenta);
   lienzo.innerHTML = diseno(lam.lineas, n, r, ajustes, nDato, otra);
+  invertirCursivas(lienzo);
   document.querySelector('.marco').style.display = esCuenta ? 'none' : '';
   document.querySelector('.pie').innerHTML = esCuenta ? '' :
     `<span>${limpio(ajustes.pie || CUENTA.pie || CUENTA.usuario)}</span><span>${n} / ${laminas.length}</span>`;

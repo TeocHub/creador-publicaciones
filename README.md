@@ -21,6 +21,9 @@ Carruseles para Instagram y TikTok (1080 × 1350) a partir de texto, con el esti
 | `--- cita` | Una frase destacada y quién la dijo. |
 | `--- cierre` | Invitación final y dónde seguir. |
 | `*palabra*` | Destaca una palabra con el color de la cuenta. |
+| `**palabra**` | Negrita. |
+| `_palabra_` | Cursiva. Dentro de un texto que ya es cursivo, la deja recta. |
+| `~palabra~` | Tachado (también `~~palabra~~`). |
 | `# nota` | Nota personal; no aparece en las láminas. |
 | `pie: texto` | Cambia el texto de abajo de cada lámina. |
 | `volanta: texto` | Línea pequeña sobre el título de la portada. |
