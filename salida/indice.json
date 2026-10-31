@@ -17,6 +17,13 @@
  ],
  "teoc.books": [
   {
+   "nombre": "31-10",
+   "titulo": "Apagas la luz y le das play",
+   "fecha": "2026-10-31T17:26:36+00:00",
+   "laminas": 8,
+   "huella": 1546691768
+  },
+  {
    "nombre": "capitulo-03",
    "titulo": "¿Qué era una chingana?",
    "fecha": "2026-10-30T21:52:37+00:00",
