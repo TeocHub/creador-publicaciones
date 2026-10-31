@@ -1,0 +1,32 @@
+pie: @teoc.books
+volanta: 31 de octubre · una noche cualquiera
+
+--- portada
+Apagas la luz y *le das play*
+Sabes que no vas a dormir bien. Pero igual la quieres ver ¿por qué?
+
+--- dato
+Primero, el silencio
+La casa cruje, un personaje no lo nota, pero tú como espectador sí. Ya sabes que algo va a suceder, y eso te pone en tensión. _Hitchcock_ llamaba *suspenso*: cuando el público sabe más que los personajes.
+
+--- dato
+Después, una sombra
+No se ve bien qué es, y tu cabeza completa la poca información con algo peor. En *Tiburón* pasó por "accidente": el tiburón mecánico fallaba tanto que casi no aparece, y por eso asusta más.
+
+--- dato
+Entonces, el grito
+Saltas del sillón, el corazón se acelera, y... no pasó nada. Estás en tu casa, a salvo. La historia te dejó sentir el peligro sin correrlo, y de ahí viene ese alivio raro, casi de placer.
+
+--- dato
+Cuando termina, algo se queda
+Con las luces encendidas aparece la otra pregunta: ¿de qué hablaba ese monstruo? Frankenstein hablaba del miedo a la ciencia sin límites, y los zombis de _Romero_ vagaban por un centro comercial. Detrás de cada criatura hay un miedo de su respectiva época.
+
+--- cita
+La emoción más antigua e intensa de la humanidad es el miedo, y el miedo más antiguo e intenso es el miedo a lo *desconocido*.
+—H. P. Lovecraft
+
+--- cierre
+Por eso volvemos a apagar la luz. Esta cuenta empezó con libros, pero ahora se abre a *todas las historias*: _libros, películas, series y lo que venga_.
+¿Qué historia te dejó sin dormir? Cuéntamela en comentarios.
+
+# nota: probar si la escena funciona mejor en segunda persona ("apagas") o en primera ("apago")
