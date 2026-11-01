@@ -1,0 +1,43 @@
+# intentodocente: aprendizaje autónomo
+# Fuentes: SCT-Chile (CRUCh), 1 crédito = 24 a 31 horas, 60 créditos al año; Kirschner, Sweller y Clark (2006); Rasch y Born, Physiological Reviews
+volanta: Para pensar
+
+--- portada
+¿Qué es verdaderamente el aprendizaje *autónomo*?
+Una muy buena idea que a veces se aplica al revés.
+
+--- dato
+Aprender de forma autónoma es saber planificar, buscar y evaluar lo que uno aprende.
+Es una habilidad. Y como toda habilidad, *se enseña*.
+
+--- dato
+Pero a veces se entiende como _«arréglatelas»_.
+Un tema, unos textos, un informe. Y la clase queda como un trámite.
+
+--- dato
+Ver algo una vez no es ~haberlo~ *aprenderlo*.
+Se aprende volviendo a los temas, una y otra vez. Lo que no se retoma, se olvida.
+
+--- dato
+Y sin guía, se aprende *peor*.
+La investigación en psicología educativa lo muestra hace años, sobre todo cuando el tema es nuevo.
+
+--- dato
+El trabajo autónomo ya está *contado*.
+El sistema de créditos lo incluye: entre 40 y 50 horas semanales en total, sin contar traslados ni ventanas entre clases. Si cada ramo planifica por separado, la suma no cuadra.
+
+--- dato
+Y lo que no cabe, sale del *descanso*.
+Pero desvelarse no es esfuerzo: es al dormir cuando la memoria fija lo aprendido.
+
+--- dato
+Guiar la autonomía se ve así:
+Objetivos claros, preguntas que orienten la lectura, **retroalimentación antes de evaluar** y ramos que coordinan su carga entre sí.
+
+--- cita
+La autonomía es el *destino*, no el punto de partida.
+intentodocente
+
+--- cierre
+Enseñar a aprender solo también es enseñar.
+@intentodocente
