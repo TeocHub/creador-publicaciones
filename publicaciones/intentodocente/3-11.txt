@@ -1,0 +1,39 @@
+# intentodocente: serie aprendizaje autónomo, parte 1 (aula invertida)
+# Fuentes: origen Bergmann y Sams, Woodland Park High School, 2007; metaanálisis van Alten et al., Universidad de Utrecht, Educational Research Review, 2019 (114 estudios, la mayoría de matemáticas y ciencias en universidades de EE.UU.)
+volanta: Para pensar
+
+--- portada
+Invertir no es *restar*
+Qué es el aula invertida y por qué tantas veces se aplica al revés.
+
+--- dato
+En 2007, dos profes de química empezaron a *grabar* sus clases.
+Querían ayudar a quienes faltaban o vivían lejos. Así nació lo que hoy llamamos aula invertida.
+
+--- dato
+La explicación pasa a la casa. La práctica, a la *sala*.
+Lo que puedes hacer solo, como ver o leer, queda para afuera. Lo difícil, como resolver, preguntar y equivocarse, se hace en clase con el profe al lado.
+
+--- dato
+La clase no desaparecía. Se volvía más *intensa*.
+Ejercicios, laboratorio, dudas. Y el profe atendiendo a quien más lo necesitaba.
+
+--- dato
+Hoy la idea tiene _muchos nombres_.
+Aula invertida, flipped classroom, aprendizaje autónomo, clase híbrida. Pero a veces de la idea original queda solo la *primera mitad*.
+
+--- dato
+Se manda a leer en casa… y en clase no se usa lo leído.
+Si la sala no sirve para practicar lo que se trajo, no es aula invertida: es **tarea con otro nombre**.
+
+--- dato
+Cuando se recorta la clase, se aprende *menos*.
+Un análisis de 114 estudios encontró que el aula invertida ayuda solo si se mantiene el tiempo en clase para aplicar. Donde se redujo, los estudiantes aprendieron menos.
+
+--- dato
+Bien hecha, se ve así:
+Material breve para antes, una pregunta para llegar pensando y la clase completa para aplicar, dudar y recibir **retroalimentación**.
+
+--- cierre
+Invertir la clase no es ~quitarla~. Es *darle vuelta*.
+intentodocente
