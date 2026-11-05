@@ -1,0 +1,37 @@
+volanta: Tiempo docente
+final: intentodocente
+pie: Fuente: Ley 20.903 y orientaciones CPEIP/Mineduc.
+
+--- portada
+¿Por qué las clases distintas parecen *excepción*?
+Hice una clase diferente y un estudiante lo notó. Me dejó pensando.
+
+--- cita
+"Que las clases pueden ser distintas y divertidas."
+DIjo un estudiante, al terminar una clase de scape room
+# nota: no menciones curso ni colegio. Es tu frase real; no la cambies.
+
+--- dato
+Esa clase costó *tiempo*.
+Materiales físicos, una web para validar códigos y varias pruebas antes. Pude hacerlo porque tengo un solo curso, una vez por semana.
+
+--- dato
+La ley ya reconoce que enseñar no es solo *estar en aula*.
+Desde 2019, el 35% de las horas de contrato docente es no lectivo: osea para planificar, evaluar y preparar.
+# nota: antes era 25%. Dato respaldado por la Ley 20.903 y el CPEIP.
+
+--- dato
+Un mínimo común tiene un *costo*.
+Garantizar que todos aprendan lo básico es justo. Pero el cronograma deja poco espacio para probar cosas nuevas.
+# nota: aquí no afirmes que las Bases son "demasiado extensas" sin una fuente.
+
+--- dato
+Culpa y responsabilidad no son lo *mismo*.
+El docente no controla su tiempo, pero sí puede decidir qué hace con un pequeño margen, aunque sea 5 minutos.
+
+--- dato
+Los estudiantes también *aprenden a participar*.
+Una dinámica nueva se practica, como cualquier rutina. Si nunca se ensaya, es difícil saber cómo hacerlo.
+
+--- cierre
+Quizás la pregunta no es de quién es la culpa, sino cuánto *margen* tiene cada uno, y qué hace con él.
