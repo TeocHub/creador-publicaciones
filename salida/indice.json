@@ -1,6 +1,13 @@
 {
  "intentodocente": [
   {
+   "nombre": "4-12",
+   "titulo": "Las ideas grandes no se terminan",
+   "fecha": "2026-11-27T14:15:41+00:00",
+   "laminas": 11,
+   "huella": 280671305
+  },
+  {
    "nombre": "2-12",
    "titulo": "Si termina en una guía, no era un proyecto",
    "fecha": "2026-11-27T14:11:05+00:00",
