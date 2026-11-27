@@ -222,3 +222,13 @@ button:focus-visible { outline: 2px solid var(--c-acento); outline-offset: 3px; 
 }
 .visor footer { padding: 0 20px 20px; }
 .visor .estado { margin-top: 10px; }
+
+/* ---------- Selector de modo: carrusel o video (igual en ambas páginas) ---------- */
+.modos { display: flex; justify-content: center; gap: 4px; padding: 8px 16px; background: #141311; }
+.modos a {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px;
+  color: #b9b0a3; text-decoration: none; font: 600 14px Inter, system-ui, sans-serif;
+}
+.modos a:hover { color: #fff; }
+.modos a[aria-current="page"] { background: #ebe5db; color: #141311; }
+.modos a:focus-visible { outline: 2px solid #d9472f; outline-offset: 2px; }

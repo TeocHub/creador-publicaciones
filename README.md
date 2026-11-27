@@ -1,8 +1,12 @@
 # Creador de publicaciones
 
-Carruseles para Instagram y TikTok (1080 × 1350) a partir de texto, con el estilo de cada cuenta.
+Dos herramientas en un mismo sitio; arriba de cada página se cambia entre una y otra:
 
-**Editor:** https://teochub.github.io/creador-publicaciones/
+- **Publicación · carrusel:** carruseles para Instagram y TikTok (1080 × 1350) a partir de texto, con el estilo de cada cuenta.
+- **Video:** el taller de piezas animadas para YouTube, Reels, Shorts y TikTok (16:9 o 9:16).
+
+**Carrusel:** https://teochub.github.io/creador-publicaciones/
+**Video:** https://teochub.github.io/creador-publicaciones/video/
 
 ## Usarlo desde el editor
 
@@ -15,7 +19,18 @@ Carruseles para Instagram y TikTok (1080 × 1350) a partir de texto, con el esti
 
 Para quitar una publicación del historial, borra su `.txt` de `publicaciones/` en GitHub.
 
-## Códigos
+## Video: taller de piezas
+
+Crea los apoyos visuales que no se pueden grabar (citas, datos, definiciones, líneas de tiempo, etc.) y los exporta en MP4, todo dentro del navegador.
+
+1. Pega el guion con sus marcas (`[CITA: texto | autor | obra | año]`, `[DATO: …]`, `[VOZ: …]`…) y toca **Leer guion**. La lista completa está en **Chuleta de marcas**. Los `[BROLL: …]` quedan como recordatorio de lo que hay que grabar.
+2. Carga el audio de tu voz, dale a reproducir y toca **Entra** cuando digas cada idea (y **Sale**, si quieres cortarla antes).
+3. Elige formato (horizontal o vertical), fondo (grafito, noche, papel o verde para recortar), hilo de la cuenta, piel del tema y ritmo.
+4. Exporta **Clips sueltos** (un `.zip` con los MP4 y `tiempos.txt`, que dice en qué minuto va cada uno) o la **Pista completa** (un solo MP4 que se pone en 0:00 sobre el audio).
+
+Necesita Chrome actualizado (usa WebCodecs). El audio no sale del dispositivo. El guion y las marcas se guardan en el navegador.
+
+## Códigos del carrusel
 
 | Código | Qué hace |
 |---|---|
@@ -48,7 +63,8 @@ Cada cuenta tiene su carpeta en `cuentas/<cuenta>/` con `cuenta.json` (usuario, 
 
 | Ruta | Qué es |
 |---|---|
-| `index.html`, `editor/` | El editor (GitHub Pages). |
+| `index.html`, `editor/` | El editor de carruseles (GitHub Pages). |
+| `video/index.html` | El taller de piezas de video. Es un solo archivo con todo incluido. |
 | `plantilla/` | El diseño de las láminas: `lamina.html`, `base.css` y `lamina.js`. |
 | `publicaciones/<cuenta>/` | Los textos de cada publicación. |
 | `salida/<cuenta>/` | Las imágenes que genera GitHub Actions. |
